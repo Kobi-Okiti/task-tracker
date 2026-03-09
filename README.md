@@ -1,50 +1,97 @@
-# Welcome to your Expo app 👋
+# Task Tracker App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple mobile app built with **React Native**, **Expo**, and **TypeScript** for tracking tasks.  
 
-## Get started
+Users can:
 
-1. Install dependencies
+- View a list of tasks  
+- Add new tasks  
+- Mark tasks as complete/incomplete  
+- Filter tasks by **All / Active / Completed**  
+- Persist tasks locally on the device  
+- See validation messages for empty tasks  
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## Features
 
-   ```bash
-   npx expo start
-   ```
+- Add and complete tasks with **visual feedback**  
+- Tasks persist locally using `AsyncStorage`  
+- Filter tabs for All / Active / Completed tasks  
+- Visual validation for empty tasks  
+- Empty state messaging when no tasks exist  
+- Clean, responsive UI with status bar customization  
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Architecture & Code Structure
+app/
+├─ index.tsx # Home screen (renders TaskInput, FilterTabs, TaskItems)
+src/
+├─ components/
+│ ├─ TaskInput.tsx # Input field + Add button + visual validation
+│ ├─ TaskItem.tsx # Task row with completion toggle
+│ ├─ FilterTabs.tsx # All / Active / Completed filter buttons
+├─ hooks/
+│ ├─ useTasks.ts # Main hook handling state, persistence, and filtering
+├─ storage/
+│ ├─ taskStorage.ts # AsyncStorage save/load functions
+├─ types/
+│ ├─ task.ts # Task type definition
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+- **`useTasks` hook** contains all logic:  
+  - Loading and saving tasks  
+  - Adding tasks  
+  - Toggling completion  
+  - Filtering tasks  
 
-When you're ready, run:
+- Components are **presentational**, consuming hook data.  
+- Separation ensures **clean, maintainable, and testable code**.  
+
+---
+
+## Setup Instructions
+
+1. Clone the repository:
 
 ```bash
-npm run reset-project
+git clone https://github.com/Kobi-Okiti/task-tracker
+cd task-tracker
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies:
+```bash
+npm install
+npx expo install
+```
 
-## Learn more
+3. Start the app:
+```bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+4. Run on a simulator or your device using Expo Go.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## Libraries Used**
+- react-native: Base framework for building the app
+- expo: Managed workflow and fast development environment
+- typescript: Type safety and better code quality
+- @react-native-async-storage/async-storage: Persist tasks locally
+- react-native-uuid: Generate unique IDs for tasks
 
-Join our community of developers creating universal apps.
+## UX Handling
+- Empty state: Shows a message if there are no tasks
+- Validation: Prevents empty tasks and shows a warning
+- Completion status: Completed tasks are struck through and grayed out
+- Filter tabs: Clear visual indicator for active filter
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Future Improvements
+**If given more time, the app could include**:
+- Swipe-to-delete tasks for faster management
+- Edit tasks in place
+- Dark mode support
+- Animations for adding, completing, or toggling tasks
+- Unit tests for useTasks and components

@@ -25,7 +25,7 @@ export const useTasks = () => {
 
   // Add a new task
   const addTask = (title: string) => {
-    if (!title.trim()) return; // Prevent user creating empty tasks
+    if (!title.trim()) return;
     const newTask: Task = { id: uuid.v4().toString(), title, completed: false };
     setTasks(prev => [newTask, ...prev]);
   };
