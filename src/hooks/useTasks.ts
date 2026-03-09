@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Task } from "../types/task";
 import { saveTasks, loadTasks } from "../storage/taskStorage";
-import { v4 as uuidv4 } from "uuid";
+import uuid from "react-native-uuid";
 
 export type Filter = "all" | "active" | "completed";
 
@@ -26,7 +26,7 @@ export const useTasks = () => {
   // Add a new task
   const addTask = (title: string) => {
     if (!title.trim()) return; // Prevent user creating empty tasks
-    const newTask: Task = { id: uuidv4(), title, completed: false };
+    const newTask: Task = { id: uuid.v4().toString(), title, completed: false };
     setTasks(prev => [newTask, ...prev]);
   };
 
