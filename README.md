@@ -61,7 +61,6 @@ cd task-tracker
 2. Install dependencies:
 ```bash
 npm install
-npx expo install
 ```
 
 3. Start the app:
@@ -73,7 +72,7 @@ npx expo start
 
 ---
 
-## Libraries Used**
+## Libraries Used
 - react-native: Base framework for building the app
 - expo: Managed workflow and fast development environment
 - typescript: Type safety and better code quality
