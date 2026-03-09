@@ -25,20 +25,18 @@ Users can:
 ---
 
 ## Architecture & Code Structure
-app/
-├─ index.tsx # Home screen (renders TaskInput, FilterTabs, TaskItems)
-src/
-├─ components/
-│ ├─ TaskInput.tsx # Input field + Add button + visual validation
-│ ├─ TaskItem.tsx # Task row with completion toggle
-│ ├─ FilterTabs.tsx # All / Active / Completed filter buttons
-├─ hooks/
-│ ├─ useTasks.ts # Main hook handling state, persistence, and filtering
-├─ storage/
-│ ├─ taskStorage.ts # AsyncStorage save/load functions
-├─ types/
-│ ├─ task.ts # Task type definition
-
+- **Home Screen** (`app/index.tsx`)
+  - Renders `TaskInput`, `FilterTabs`, and a list of `TaskItem`s
+- **Components** (`src/components/`)
+  - `TaskInput.tsx` → Input field + Add button + visual validation
+  - `TaskItem.tsx` → Task row with completion toggle
+  - `FilterTabs.tsx` → All / Active / Completed filter buttons
+- **Hooks** (`src/hooks/`)
+  - `useTasks.ts` → Main hook handling state, persistence, and filtering
+- **Storage** (`src/storage/`)
+  - `taskStorage.ts` → AsyncStorage save/load functions
+- **Types** (`src/types/`)
+  - `task.ts` → Task type definition
 
 - **`useTasks` hook** contains all logic:  
   - Loading and saving tasks  
